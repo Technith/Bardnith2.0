@@ -140,14 +140,22 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
   if (commandName === "add") {
     const url = interaction.options.getString("url", true);
-    await interaction.reply(`Added: ${url}`);
-    queue.push(url);
+    if (url.includes("youtube.com") || url.includes("youtu.be")) {
+      if (url.includes("playlist")) {
+        await interaction.reply("Playlists not supported");
+        return;
+      }
+      await interaction.reply(`Added: ${url}`);
+      queue.push(url);
+    } else {
+      await interaction.reply("Invalid URL");
+    }
   }
 
   if (commandName === "remove") {
     const index = interaction.options.getInteger("index", true);
     await interaction.reply(`Removed: ${queue[index]}`);
-    queue.splice(1, index);
+    queue.splice(index, 1);
   }
 
   if (commandName === "queue") {
@@ -155,12 +163,16 @@ client.on(Events.InteractionCreate, async (interaction) => {
     for (const [i, item] of queue.entries()) {
       queueString += `${i} - ${item}\n`;
     }
-    await interaction.reply(queueString);
+    if (!queueString.length) {
+      await interaction.reply("Empty Queue");
+    } else {
+      await interaction.reply(queueString);
+    }
   }
 
   if (commandName === "join") {
-    const memeber = interaction.member as GuildMember;
-    const channel = memeber.voice.channel;
+    const member = interaction.member as GuildMember;
+    const channel = member.voice.channel;
 
     if (!channel) {
       await interaction.reply("User not in voice channel");
