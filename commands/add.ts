@@ -1,5 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { guildManager } from "../state";
+import { play } from "../music";
 
 export default {
   data: new SlashCommandBuilder()
@@ -24,6 +25,7 @@ export default {
       await interaction.reply(`Added: ${url}`);
       const guildState = guildManager(interaction.guildId!);
       guildState.queue.push(url);
+      play(guildState);
     } else {
       await interaction.reply("Invalid URL");
     }
