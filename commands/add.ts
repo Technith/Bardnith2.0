@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { AudioPlayerStatus } from "@discordjs/voice";
 import { guildManager } from "../state";
 import { play } from "../music";
 
@@ -25,7 +26,9 @@ export default {
       await interaction.reply(`Added: ${url}`);
       const guildState = guildManager(interaction.guildId!);
       guildState.queue.push(url);
-      play(guildState);
+      if (guildState.player.state.status !== AudioPlayerStatus.Playing) {
+        play(guildState);
+      }
     } else {
       await interaction.reply("Invalid URL");
     }

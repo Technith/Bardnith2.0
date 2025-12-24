@@ -19,7 +19,7 @@ export default {
       return;
     }
 
-    const playState = await play(guildState);
-    await interaction.reply(playState);
+    await interaction.reply(`Playing ${guildState.queue[0]}`);
+    play(guildState);
   },
 };

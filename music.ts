@@ -4,8 +4,10 @@ import { spawn } from "child_process";
 
 import type { GuildState } from "./state";
 
-export async function play(guildState: GuildState) {
-  if (!guildState.queue.length) return "Empty Queue";
+export function play(guildState: GuildState) {
+  if (!guildState.queue.length) {
+    return;
+  }
 
   const url = guildState.queue.shift()!;
 
@@ -23,5 +25,4 @@ export async function play(guildState: GuildState) {
 
   const resource = createAudioResource(proc.stdout);
   guildState.player.play(resource);
-  return "Playing";
 }

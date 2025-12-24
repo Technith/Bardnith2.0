@@ -27,7 +27,9 @@ export function guildManager(guildId: string): GuildState {
     player.on(AudioPlayerStatus.Idle, () => {
       console.log("Idle");
       const guildState = guildStates.get(guildId);
-      if (guildState && guildState.queue.length) play(guildState);
+      if (guildState && guildState.queue.length) {
+        play(guildState);
+      }
     });
 
     player.on("error", (error) => {
