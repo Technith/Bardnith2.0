@@ -1,15 +1,20 @@
-# bardnith2.0
+# Bardnith 2.0
 
-To install dependencies:
+Discord bot that plays YouTube audio. I made it because Rythm bot ads were annoying.
 
-```bash
-bun install
-```
+Started in C# but Discord.NET was broken/outdated so I had to redo everything in TypeScript.
 
-To run:
+## Commands
 
-```bash
-bun run index.ts
-```
+- `/join`
+- `/leave`
+- `/play <youtube url>`
+- `/skip`
+- `/pause` - toggles pause on/off
+- `/add <youtube url>` - adds to queue
+- `/remove <index>` - removes from queue
+- `/queue` - shows the queue
 
-This project was created using `bun init` in bun v1.3.5. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Uses yt-dlp under the hood.
+
+Only supports YouTube URLs, no search. Might add it later, probably won't.
