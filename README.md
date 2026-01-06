@@ -2,7 +2,7 @@
 
 Discord bot that plays YouTube audio. I made it because Rythm bot ads were annoying.
 
-Started in C# but Discord.NET was broken/outdated so I had to redo everything in TypeScript.
+Started in C# but joining voice channels with Discord.NET was broken/outdated on account of end-to-end encryption changes by Discord so I had to redo everything in TypeScript.
 
 ## Commands
 
