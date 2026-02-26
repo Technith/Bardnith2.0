@@ -23,6 +23,11 @@ export function play(guildState: GuildState) {
     url,
   ]);
 
-  const resource = createAudioResource(proc.stdout);
+  const resource = createAudioResource(proc.stdout, {
+    inlineVolume: true,
+  });
+
+  resource.volume?.setVolume(0.5);
+
   guildState.player.play(resource);
 }
