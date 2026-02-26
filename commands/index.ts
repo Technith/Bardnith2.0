@@ -7,6 +7,7 @@ import pause from "./pause";
 import ping from "./ping";
 import queue from "./queue";
 import remove from "./remove";
+import clear from "./clear";
 
 const commandList = [play, skip, add, join, leave, pause, ping, queue, remove];
 

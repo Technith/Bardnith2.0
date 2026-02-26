@@ -9,9 +9,15 @@ export default {
   execute: async (interaction: ChatInputCommandInteraction) => {
     let queueString: string = "";
     const guildState = guildManager(interaction.guildId!);
-    for (const [i, item] of guildState.queue.entries()) {
-      queueString += `${i} - ${item}\n`;
+    const numEntries = Math.min(guildState.queue.length, 10);
+    for (let i = 0; i < numEntries; i++) {
+      queueString += `\n${i + 1} - ${guildState.queue[i]}`;
     }
+
+    if (guildState.queue.length > 10) {
+      queueString += `\n + ${guildState.queue.length}`;
+    }
+
     if (!queueString.length) {
       await interaction.reply("Empty Queue");
     } else {

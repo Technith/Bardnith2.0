@@ -14,11 +14,10 @@ export default {
     .setDescription("Plays audio from queue"),
   execute: async (interaction: ChatInputCommandInteraction) => {
     const guildState = guildManager(interaction.guildId!);
-    if (!guildState.queue.length) {
+    if (guildState.queue.length === 0) {
       await interaction.reply("Empty Queue");
       return;
     }
-
     await interaction.reply(`Playing ${guildState.queue[0]}`);
     play(guildState);
   },
