@@ -16,6 +16,6 @@ Started in C# but joining voice channels with Discord.NET was broken/outdated on
 - `/queue` - shows the queue
 - `/clear` - clears the current queue
 
-Uses yt-dlp under the hood.
+Uses yt-dlp under the hood (Make sure it is up-to-date).
 
 Supports individual videos and playlists.
