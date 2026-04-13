@@ -9,7 +9,7 @@ import queue from "./queue";
 import remove from "./remove";
 import clear from "./clear";
 
-const commandList = [play, skip, add, join, leave, pause, ping, queue, remove];
+const commandList = [play, skip, add, join, leave, pause, ping, queue, remove, clear];
 
 export const commands = new Map<string, any>();
 for (const cmd of commandList) {

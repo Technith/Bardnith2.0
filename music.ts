@@ -24,7 +24,8 @@ export function play(guildState: GuildState) {
   ]);
 
   const resource = createAudioResource(proc.stdout, {
-    inlineVolume: true,
+	silencePaddingFrames: 5,
+	inlineVolume: true,
   });
 
   resource.volume?.setVolume(0.5);
