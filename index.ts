@@ -13,9 +13,7 @@ async function registerCommands() {
 
   try {
     console.log("Registering slash commands...");
-    const guildIds = [
-	    process.env.GUILD_IDS,
-    ];
+    const guildIds = process.env.GUILD_IDS.split(',');
 
     for (const guildId of guildIds) {
 	    await rest.put(
@@ -23,6 +21,7 @@ async function registerCommands() {
 		    { body: commandData }
 	    );
 	    console.log(`Commands registered for guild ${guildId}`);
+    }
 
     // Use applicationCommands(APP_ID) for non-testing.
     // Takes longer to propigate to all servers
